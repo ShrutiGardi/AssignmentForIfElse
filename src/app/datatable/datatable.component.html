@@ -1,0 +1,80 @@
+<div class="team-members-table"  >
+  <div class="team-heading">
+    <h5 style="display:inline-block; margin-right:4px;">Team members</h5><h5 class="user-count" style="display:inline-block; margin-left:0;">{{ grid_data.length }} users</h5>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let column of grid_columns" [style.text-align]="column.align">
+          <ng-container *ngIf="column.type === 'checkbox'">
+            <input type="checkbox" [(ngModel)]="allSelected" (change)="toggleAllSelection()" />
+          </ng-container>
+          <ng-container *ngIf="column.type !== 'checkbox'">
+            {{ column.column_name }}
+          </ng-container>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let row of paged_data; let i = index" class="hover-row">
+        <td *ngFor="let column of grid_columns" [style.text-align]="column.align">
+          <ng-container [ngSwitch]="column.type">
+            <ng-container *ngSwitchCase="'checkbox'">
+              <input type="checkbox" [(ngModel)]="row.selected" />
+            </ng-container>
+            <ng-container *ngSwitchCase="'name'">
+              <div class="member-info">
+                <img [src]="userimage" alt="user" class="avatar" />
+                <div>
+                  <strong>{{ row[column.column_key]?.first_name }} {{ row[column.column_key]?.last_name
+                    }}</strong><br />
+                  <span class="handle">{{ row[column.column_key]?.handle }}</span>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'status'">
+              <span class="badge" [ngClass]="{
+                'badge-success': row[column.column_key] === 'Customer',
+                'badge-primary': row[column.column_key] === 'Churned'
+              }">
+                ● {{ row[column.column_key] }}
+              </span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'text'">
+              {{ row[column.column_key] }}
+            </ng-container>
+            <ng-container *ngSwitchCase="'progress'">
+              <div class="progress-container">
+                <div class="progress-bar">
+                  <div class="fill" [style.width.%]="row[column.column_key]"></div>
+                </div>
+                <span>{{ row[column.column_key] }}%</span>
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'tags'">
+              <span *ngFor="let tag of row[column.column_key]" class="badge tag-badge"
+                [style.backgroundColor]="tag.background_color" [style.color]="tag.text_color">
+                {{ tag.value }}
+              </span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'actions'">
+              <button class="icon-btn" (click)="showPopup(row)">✏️</button>
+              <button class="icon-btn" (click)="deleteRow(i)">🗑️</button>
+            </ng-container>
+
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button class="page-btn" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">&lt; Previous</button>
+    <div class="page-numbers">
+      <button *ngFor="let p of pages" [class.active]="p === currentPage" (click)="goToPage(p)">{{ p }}</button>
+    </div>
+    <button class="page-btn" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === pages.length">Next &gt;</button>
+  </div>
+</div>

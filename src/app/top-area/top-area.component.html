@@ -1,0 +1,36 @@
+<div class="dashboard-container">
+  <h2>Welcome back, Olivia</h2>
+
+  <div class="top-section">
+    <div class="vendor-breakdown">
+      <h5>Vendor Breakdown</h5>
+      <p>Keep Track of Vendors and their security ratings.</p>
+      <apx-chart
+        [series]="barChartSeries"
+        [chart]="barChart"
+        [xaxis]="barChartXAxis"
+        [tooltip]="barChartTooltip"
+        [legend]="barChartLegend"
+        [fill]="barChartFill"
+        [stroke]="barChartStroke">
+      </apx-chart>
+      <button class="upgrade-button">View Full Report</button>
+    </div>
+
+    <div class="vendors-monitored">
+      <h5>Vendors monitored</h5>
+      <p>You're using 80% of available spots.</p>
+      <apx-chart
+        [series]="radialSeries"
+        [chart]="radialChart"
+        [labels]="radialLabels"
+        [plotOptions]="radialPlotOptions"
+        [fill]="radialFill">
+      </apx-chart>
+      <p class="upgrade-text">You've almost reached your limit</p>
+      <p class="upgrade-text">You have 60 spots remaining. Upgrade plan to monitor more vendors.</p>
+      
+      <button class="upgrade-button ">Upgrade Plan</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,138 @@
+.team-members-table {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.team-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+
+  h5 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.2px;
+  }
+
+  .user-count {
+    background: #f3e8ff;
+    color: #a855f7;
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-left: 0;
+    box-shadow: 0 1px 4px rgba(168,85,247,0.07);
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 12px;
+    vertical-align: middle;
+  }
+}
+
+.hover-row:hover {
+  background-color: #f9f9f9;
+}
+
+.member-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  .handle {
+    font-size: 0.8rem;
+    color: #888;
+  }
+}
+
+.badge {
+  border-radius: 12px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  margin-right: 4px;
+}
+
+.badge-success {
+  background-color: #e0f7e9;
+  color: #1aaa55;
+}
+
+.badge-primary {
+  background-color: #d8eaff;
+  color: #2979ff;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .progress-bar {
+    width: 80px;
+    height: 6px;
+    background: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+
+    .fill {
+      height: 100%;
+      background-color: #a855f7;
+    }
+  }
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 4px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+
+  .page-btn {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+  }
+
+  .page-numbers {
+    display: flex;
+    gap: 6px;
+
+    button {
+      background: none;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &.active {
+        background: #a855f7;
+        color: #fff;
+      }
+    }
+  }
+}
+
